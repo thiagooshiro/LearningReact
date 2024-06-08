@@ -2,6 +2,7 @@ import React from 'react'
 import './main.css'
 import Footer from '../components/footer'
 import Header from '../components/header'
+import Pessoas from '../components/pessoas'
 
 function Main() {
 	return(
@@ -9,8 +10,9 @@ function Main() {
 			<Header/>
 			<div className='main-content'>
 				<h1>Some stuff</h1>
-				<Footer/>
+				<Pessoas />
 			</div>
+			<Footer/>
 		</div>
 	)
 }
