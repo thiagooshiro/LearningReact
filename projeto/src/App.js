@@ -1,6 +1,7 @@
 import './App.css';
+import { UserProvider } from './context/userContext';
 import Main from './pages/main'
-import Projeto from './pages/projeto';
+
 
 function App() {
   return (
@@ -10,4 +11,12 @@ function App() {
   );
 }
 
-export default App;
+
+function AppWrapper() {
+  return (
+    <UserProvider>
+      <App />
+    </UserProvider>
+  );
+}
+export default AppWrapper;
