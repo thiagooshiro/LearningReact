@@ -1,0 +1,6 @@
+Retorna um número específico de pokemons:
+'https://pokeapi.co/api/v2/pokemon?limit=151'
+
+Para consultar um pokemon em específico
+
+https://pokeapi.co/api/v2/pokemon/{numero do pokemon}/
