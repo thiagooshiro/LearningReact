@@ -4,7 +4,7 @@ import Main from './pages/main'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Register from './pages/register';
 import About from './pages/about';
-import Pokedex from './pages/pokedex';
+import Hero from './pages/hero';
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Main />}  />
-        <Route path='/pokedex' element={ <Pokedex />} />
+        <Route path='/hero' element={ <Hero />} />
         <Route path='/register' element={<Register />} />
         <Route path='/about' element={<About />} />
       </Routes>
