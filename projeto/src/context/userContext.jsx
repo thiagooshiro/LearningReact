@@ -7,6 +7,7 @@ const UserProvider = ({ children }) => {
   const [pessoas, setPessoas] = useState([]);
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState('')
+  const [searchByCategory, setSearchByCategory] = useState(null)
 
 
   const values = { 
@@ -15,7 +16,9 @@ const UserProvider = ({ children }) => {
     loading,
     setLoading,
     user,
-    setUser
+    setUser,
+    searchByCategory,
+    setSearchByCategory
   }
 
   return (
