@@ -18,7 +18,7 @@ const UserProvider = ({ children }) => {
     user,
     setUser,
     searchByCategory,
-    setSearchByCategory
+    setSearchByCategory,
   }
 
   return (

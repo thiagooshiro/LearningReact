@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../context/userContext'
 import HeroInputField from '../components/heroInputField'
+import ShowRecipes from '../components/showRecipes'
 
 
 function Hero() {
@@ -19,6 +20,7 @@ function Hero() {
 		<div>
             {<h1>Bem vindo, {user ? user : 'usuario'}!</h1>}
 			<HeroInputField />
+			<ShowRecipes />
         </div>
 	)
 }

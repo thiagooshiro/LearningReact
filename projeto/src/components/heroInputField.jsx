@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/userContext'
 
 
 function HeroInputField() {
     const [options, setOptions] = useState([])
     const [selected, setSelected] = useState('')
-    const {setSearchByCategory} = useContext(UserContext)
+    const {setSearchByCategory, setRecipes } = useContext(UserContext)
    
     useEffect(() => { 
         const fetchCategories = async () => {
