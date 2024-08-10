@@ -14,6 +14,9 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import axios from 'axios';
+import IngredientList from './ingredientList';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,20 +31,44 @@ const ExpandMore = styled((props) => {
 
 export default function RecipeReviewCard({id, title, image}) {
   const [expanded, setExpanded] = useState(false);
-  const [recipeInfo, setRecipeInfo] = useState()
+  const [recipeInfo, setRecipeInfo] = useState(null)
+  const [combinado, setCombinado] = useState(null)
 
-  const getRecipeById = async (id) => {
-	try {
-	  const fetchData = await fetch(`http://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-	  if (!fetchData.ok) {
-		throw new Error('Network response was not ok');
-	  }
-	  const data = await fetchData.json();
-	  return data.meals;
-	} catch (error) {
-	  console.error('Something went wrong:', error);
-	}
+
+  const arrangeIngredients = (mealsDetails) => {
+	let entries = Object.entries(mealsDetails)
+	if (entries) {
+		let ingredientes = entries.reduce((acc, element) => {
+			if (element[0].includes('strIngredient') && element[1])
+				acc.push(element[1])
+			return acc
+		}, [])
+	
+		let measures = entries.reduce((acc, element) => {
+			if (element[0].includes('strMeasure') && element[1])
+				acc.push(element[1])
+			return acc
+		}, [])
+		const combined = measures.map((medida, index) => ({
+			ingrediente: ingredientes[index],
+			medida
+		  }));
+		  
+		  setCombinado(combined)
+	}	
+  }
+
+
+const getRecipeById = async (id) => {
+    try {
+      const response = await axios.get(`/api/json/v1/1/lookup.php?i=${id}`);
+		console.log(response.data)
+	  return response.data.meals;
+    } catch (error) {
+      console.error('Something went wrong:', error);
+    }
   };
+
   
 
   const handleExpandClick = async () => {
@@ -50,6 +77,7 @@ export default function RecipeReviewCard({id, title, image}) {
 		if (info) {
 	  		console.log(info);
 	  		setRecipeInfo(info[0]);
+			arrangeIngredients(info[0])
 		} else {
 	  	console.error('Failed to fetch recipe info');
 		}	
@@ -107,6 +135,7 @@ export default function RecipeReviewCard({id, title, image}) {
           {recipeInfo ? <Typography paragraph>
 		    {`${recipeInfo.strInstructions}`}
           </Typography>: <Typography paragraph>Loading...</Typography>}
+		  <IngredientList combined={combinado} />
         </CardContent>
       </Collapse>
     </Card>
