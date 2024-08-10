@@ -45,7 +45,7 @@ export default function RecipeReviewCard({id, title, image}) {
   
 
   const handleExpandClick = async () => {
-	if(expanded) {
+	if(!expanded) {
 		let info = await getRecipeById(id);
 		if (info) {
 	  		console.log(info);
