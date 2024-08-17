@@ -61,8 +61,7 @@ export default function RecipeReviewCard({id, title, image}) {
 
 const getRecipeById = async (id) => {
     try {
-      const response = await axios.get(`/api/json/v1/1/lookup.php?i=${id}`);
-		console.log(response.data)
+      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
 	  return response.data.meals;
     } catch (error) {
       console.error('Something went wrong:', error);
@@ -75,7 +74,7 @@ const getRecipeById = async (id) => {
 	if(!expanded) {
 		let info = await getRecipeById(id);
 		if (info) {
-	  		console.log(info);
+	
 	  		setRecipeInfo(info[0]);
 			arrangeIngredients(info[0])
 		} else {

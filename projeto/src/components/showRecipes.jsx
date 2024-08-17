@@ -5,7 +5,6 @@ import './css/card.css'
 
 function ShowRecipes() {
     const { searchByCategory } = useContext(UserContext)
-    console.log(searchByCategory)
 	return(
         <div className='cardContainer'>
 		{ searchByCategory && searchByCategory.map((element) => (

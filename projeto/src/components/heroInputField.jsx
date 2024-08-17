@@ -12,7 +12,6 @@ function HeroInputField() {
             try {
                 const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list');
                 const data = await response.json();
-                console.log(data); // Verificar a estrutura dos dados recebidos
 
                 if (data && data.meals) {
                     setOptions(data.meals); // Configurar o estado 'options' com o array de 'meals'
@@ -33,7 +32,6 @@ function HeroInputField() {
             try {
                 const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${selected}`);
                 const data = await response.json();
-                console.log(data); // Verificar a estrutura dos dados recebidos
 
                 if (data && data.meals) {
                     setSearchByCategory(data.meals); // Configurar o estado 'options' com o array de 'meals'

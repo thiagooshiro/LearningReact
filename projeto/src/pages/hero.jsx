@@ -12,7 +12,6 @@ function Hero() {
 		if (!email) { 
 			email = 'usuário'
 		}
-		console.log(email)
 		setUser(email)
 	},[])
 

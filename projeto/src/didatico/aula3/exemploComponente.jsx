@@ -8,7 +8,6 @@ import React from "react";
 
 function ExemploComponente(props){
     let contador = 0
-    console.log(props)
     //O retorno da função deverá ser escrito dentro dos parenteses e é possível retornar HTML e código javascript.
     return(
         <div>

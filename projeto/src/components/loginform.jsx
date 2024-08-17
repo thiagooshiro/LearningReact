@@ -15,10 +15,8 @@ function LoginForm() {
         event.preventDefault()
         const dados = await fetch('./usuarios.json')
         const usuarios = await dados.json()
-        console.log(usuarios)
 
         for(let usuario of usuarios) {
-            console.log(usuario)
             if (usuario.email === email && usuario.senha === senha) {
                 setUser(usuario.email)
                 localStorage.setItem('email', usuario.email)
@@ -36,7 +34,6 @@ function LoginForm() {
 
         const handleSenha = (target) => {
             setSenha(target.value);
-            console.log(senha)
             
         };
 
